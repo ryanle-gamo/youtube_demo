@@ -21,11 +21,12 @@
  https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLNrEnIHexeMNJiD3lsCWjAP63F8NweaVg&key=AIzaSyBF2v-pZfhmIZH9ThhCi4wpJxUcur0TJaY
  */
 
-@interface ViewController () {
-    NSMutableArray *playlistArray;
-    ContentDataManager *contentDataManager;
-}
+@interface ViewController ()
+
+@property (nonatomic, strong) ContentDataManager *contentDataManager;
+@property (nonatomic, strong) NSMutableArray *playlistArray;
 @property (nonatomic, strong) IBOutlet UITableView *mainTableView;
+
 @end
 
 @implementation ViewController
@@ -33,11 +34,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    playlistArray = [[NSMutableArray alloc] init];
-    contentDataManager = [[ContentDataManager alloc] init];
-    contentDataManager.delegate = self;
-    [self makeFakeDataForPlaylist];
-    [self.mainTableView reloadData];
+    self.playlistArray = [[NSMutableArray alloc] init];
+    self.contentDataManager = [[ContentDataManager alloc] init];
+    self.contentDataManager.delegate = self;
+    [self loadYoutubePlaylist];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,11 +52,12 @@
 
 - (void)loadYoutubePlaylist {
     NSString *youtubeUrl = [NSString stringWithFormat:YOUTUBE_PLAYLIST_URL, CHANNEL_ID, 50, AUTHENTICATION_KEY];
-    [contentDataManager getYoutubePlaylistWith:youtubeUrl parameter:nil];
+    [self.contentDataManager getYoutubePlaylistWith:youtubeUrl parameter:nil];
 }
 
 - (void)finishLoadYoutubePlaylist:(NSMutableArray *)playListArray {
-    
+    self.playlistArray = playListArray;
+    [self.mainTableView reloadData];
 }
 
 - (void)makeFakeDataForPlaylist {
@@ -65,7 +66,7 @@
         plObj.plId = [NSString stringWithFormat:@"%d",i];
         plObj.plName = [NSString stringWithFormat:@"Playlist %d",i];
         plObj.videoArray = [self makeFakeDataForVideoArrayWithPlaylistId:plObj.plId];
-        [playlistArray addObject:plObj];
+        [self.playlistArray addObject:plObj];
     }
 }
 
@@ -86,7 +87,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [playlistArray count];
+    return [self.playlistArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -95,14 +96,14 @@
     if (!tableCell) {
         tableCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifer];
     }
-    PLObject *plObject = [playlistArray objectAtIndex:indexPath.row];
+    PLObject *plObject = [self.playlistArray objectAtIndex:indexPath.row];
     [tableCell.textLabel setText:plObject.plName];
     return tableCell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    PLObject *plObject = [playlistArray objectAtIndex:indexPath.row];
+    PLObject *plObject = [self.playlistArray objectAtIndex:indexPath.row];
     VideoListViewController *videoViewController = [[VideoListViewController alloc] initWithNibName:@"VideoListViewController" bundle:nil playlist:plObject];
     [self.navigationController pushViewController:videoViewController animated:YES];
 }

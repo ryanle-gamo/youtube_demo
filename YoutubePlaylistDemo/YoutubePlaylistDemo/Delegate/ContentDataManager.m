@@ -4,13 +4,15 @@
 //
 
 #import "ContentDataManager.h"
+#import "PLObject.h"
 
 @implementation ContentDataManager
 
 - (void)getYoutubePlaylistWith:(NSString *)url parameter:(NSDictionary *)parameter {
     [self GET:url parameters:parameter
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-          [self.delegate finishLoadYoutubePlaylist:nil];
+          NSMutableArray *playlists = [PLObject arrayFromDictionary:responseObject];
+          [self.delegate finishLoadYoutubePlaylist:playlists];
       }
       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
           [self.delegate finishLoadYoutubePlaylist:nil];

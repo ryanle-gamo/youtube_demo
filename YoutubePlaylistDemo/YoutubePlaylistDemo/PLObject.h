@@ -12,4 +12,6 @@
 @property (nonatomic, strong) NSString *plId;
 @property (nonatomic, strong) NSString *plName;
 @property (nonatomic, strong) NSArray *videoArray;
+
++ (NSMutableArray *)arrayFromDictionary:(NSDictionary *)dict;
 @end
