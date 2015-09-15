@@ -5,6 +5,7 @@
 
 #import "ContentDataManager.h"
 #import "PLObject.h"
+#import "VideoObject.h"
 
 @implementation ContentDataManager
 
@@ -22,10 +23,11 @@
 - (void)getYoutubeVideolistWith:(NSString *)url parameter:(NSDictionary *)parameter {
     [self GET:url parameters:parameter
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-          [self.delegate finishLoadYoutubeVideoList:nil];
+          NSMutableArray *videos = [VideoObject arrayFromDictionary:responseObject];
+          [self.delegate finishLoadYoutubeVideoList:videos];
       }
       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-          [self.delegate finishLoadYoutubePlaylist:nil];
+          [self.delegate finishLoadYoutubeVideoList:nil];
       }];
 }
 

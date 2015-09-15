@@ -15,4 +15,7 @@
 @property (nonatomic, strong) NSString *likeCount;
 @property (nonatomic, strong) NSString *viewCount;
 @property (nonatomic, strong) NSString *videoLink;
+
++ (NSMutableArray *)arrayFromDictionary:(NSDictionary *)dictionary;
+
 @end

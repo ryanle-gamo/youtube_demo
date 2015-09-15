@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataManagerDelegate.h"
 
 @class PLObject;
-@interface VideoListViewController : UIViewController
+@interface VideoListViewController : UIViewController <DataManagerDelegate>
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil playlist:(PLObject *)playlist;
 @end

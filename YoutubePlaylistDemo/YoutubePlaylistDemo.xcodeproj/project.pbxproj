@@ -67,6 +67,7 @@
 		6A628B471BA83F6D00C73758 /* ContentDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContentDataManager.h; path = Delegate/ContentDataManager.h; sourceTree = "<group>"; };
 		6A628B481BA83F6D00C73758 /* ContentDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContentDataManager.m; path = Delegate/ContentDataManager.m; sourceTree = "<group>"; };
 		6A628B491BA83F6D00C73758 /* DataManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManagerDelegate.h; path = Delegate/DataManagerDelegate.h; sourceTree = "<group>"; };
+		6A628B4C1BA84F8300C73758 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6AA836C61BA6C95100294C19 /* YoutubePlaylistDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoutubePlaylistDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AA836CA1BA6C95100294C19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AA836CB1BA6C95100294C19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -173,6 +174,7 @@
 				6AA836F71BA6D00A00294C19 /* VideoListViewController.h */,
 				6AA836F81BA6D00A00294C19 /* VideoListViewController.m */,
 				6AA836F91BA6D00A00294C19 /* VideoListViewController.xib */,
+				6A628B4C1BA84F8300C73758 /* Constants.h */,
 			);
 			path = YoutubePlaylistDemo;
 			sourceTree = "<group>";

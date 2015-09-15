@@ -10,11 +10,11 @@
 
 @implementation PLObject
 
-+ (NSMutableArray *)arrayFromDictionary:(NSDictionary *)dict {
++ (NSMutableArray *)arrayFromDictionary:(NSDictionary *)dictionary {
     
-    NSMutableArray *posterDicts = [dict valueForKeyPath:@"items"];
+    NSMutableArray *dictionary1 = [dictionary valueForKeyPath:@"items"];
     NSMutableArray *playlists = [NSMutableArray array];
-    for (NSDictionary *item in posterDicts) {
+    for (NSDictionary *item in dictionary1) {
         PLObject *playlist = [[PLObject alloc] init];
         [playlist parser:item];
         [playlists addObject:playlist];

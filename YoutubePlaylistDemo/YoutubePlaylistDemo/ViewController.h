@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DataManagerDelegate.h"
 
-@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DataManagerDelegate>
+@interface ViewController : UIViewController <DataManagerDelegate>
 
 
 @end
