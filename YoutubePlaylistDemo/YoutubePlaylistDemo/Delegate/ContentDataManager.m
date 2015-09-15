@@ -13,6 +13,7 @@
           [self.delegate finishLoadYoutubePlaylist:nil];
       }
       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          [self.delegate finishLoadYoutubePlaylist:nil];
       }];
 }
 
@@ -22,6 +23,7 @@
           [self.delegate finishLoadYoutubeVideoList:nil];
       }
       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          [self.delegate finishLoadYoutubePlaylist:nil];
       }];
 }
 
