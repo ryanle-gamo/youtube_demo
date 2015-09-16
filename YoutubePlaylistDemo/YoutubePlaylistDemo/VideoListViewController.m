@@ -50,7 +50,7 @@
 }
 
 - (void)loadYoutubeVideolist {
-    NSString *youtubeUrl = [NSString stringWithFormat:YOUTUBE_VIDEO_URL, 50, self.selectedPlaylist.plId, AUTHENTICATION_KEY];
+    NSString *youtubeUrl = [NSString stringWithFormat:YOUTUBE_PLAYLIST_ITEMS_URL, 50, self.selectedPlaylist.plId, AUTHENTICATION_KEY];
     [self.contentDataManager getYoutubeVideolistWith:youtubeUrl parameter:nil];
 }
 
