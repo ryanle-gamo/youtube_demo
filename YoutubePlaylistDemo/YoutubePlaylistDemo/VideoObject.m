@@ -26,6 +26,7 @@
     self.videoName = [json valueForKey:@"title"];
     NSDictionary *resourceDictionary = [json valueForKeyPath:@"resourceId"];
     self.videoId = [resourceDictionary valueForKey:@"videoId"];
+    self.videoLink = [NSString stringWithFormat:@"https://www.youtube.com/watch?v=%@", self.videoId];
     NSDictionary *thumbnailDictionary = [json valueForKeyPath:@"thumbnails.medium"];
     self.videoThumbnail = [thumbnailDictionary valueForKey:@"url"];
 }
